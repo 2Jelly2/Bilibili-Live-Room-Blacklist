@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.03b++
+// @version      0.03b+++
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 // @grant        none
@@ -19,7 +19,7 @@
         var patrolInterval = 500;
 
         // Manually enable or disable this script to block all anchors who belong to Majo Company according to collected list
-        //localStorage.setItem("majoBan", majoBan = true);
+        //localStorage.setItem("majoBan", true);
 
         // Live room numbers which you want to block
         var blacklist =
@@ -34,6 +34,14 @@
         if(majoBan == null)
         {
             localStorage.setItem("majoBan", majoBan = confirm("是否屏蔽所有魔女公司旗下主播？"));
+        }
+        else if(majoBan == "true")
+        {
+            majoBan = true;
+        }
+        else
+        {
+            majoBan = false;
         }
 
         if(majoBan)
