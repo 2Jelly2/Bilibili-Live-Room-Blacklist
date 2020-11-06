@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.03b+
+// @version      0.03b++
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 // @grant        none
@@ -15,7 +15,30 @@
     {
         'use strict';
 
-        var blacklist = // Live room numbers which you want to block
+        // Interval of running this script (unit: millisecond)
+        var patrolInterval = 500;
+
+        // Manually enable or disable this script to block all anchors who belong to Majo Company according to collected list
+        //localStorage.setItem("majoBan", true);
+
+        // Live room numbers which you want to block
+        var blacklist =
+            [
+                1000000000000, // Samples
+                1010101010101,
+                1001001001001
+            ];
+
+        var majoBan = localStorage.getItem("majoBan");
+
+        if(majoBan == null)
+        {
+            localStorage.setItem("majoBan", majoBan = confirm("是否屏蔽所有魔女公司旗下主播？"));
+        }
+
+        if(majoBan)
+        {
+            var majoList =
             [
                 21725187, //子花酱Hanako
                 21721967, //椎名真绪
@@ -129,16 +152,17 @@
                 569341, //香草莓巧子Machoke
                 9202763 //默然-mory
             ];
-        var patrolInterval = 500; // Interval of running this script (unit: millisecond)
+
+            blacklist = blacklist.concat(majoList);
+        }
 
         var blockedNumber = 0;
         var subjects = document.getElementsByClassName("list clearfix")[0].getElementsByTagName("li");
 
-        setInterval(patrol, patrolInterval);
+        var patrolLoop = setInterval(patrol, patrolInterval);
 
         function patrol()
         {
-            Search:
             for (var i = 0; i < subjects.length; i ++)
             {
                 var roomNumber = subjects[i].getElementsByTagName("a")[0].pathname;
@@ -148,12 +172,15 @@
                 {
                     if(roomNumber == blacklist[j])
                     {
-                        blockedNumber ++;
                         subjects[i].remove();
 
-                        if(blockedNumber == blacklist.length)
+                        if(!majoBan) // Quit script for short list
                         {
-                            break Search;
+                            blockedNumber ++;
+                            if(blockedNumber == blacklist.length)
+                            {
+                                clearInterval(patrolLoop)
+                            }
                         }
                     }
                 }
