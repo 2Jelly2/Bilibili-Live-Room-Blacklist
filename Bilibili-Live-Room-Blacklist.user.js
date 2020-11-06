@@ -19,7 +19,7 @@
         var patrolInterval = 500;
 
         // Manually enable or disable this script to block all anchors who belong to Majo Company according to collected list
-        //localStorage.setItem("majoBan", true);
+        //localStorage.setItem("majoBan", majoBan = true);
 
         // Live room numbers which you want to block
         var blacklist =
