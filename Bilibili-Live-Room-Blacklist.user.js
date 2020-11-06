@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.01
+// @version      0.02
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 // @grant        none
@@ -19,13 +19,12 @@
         var patrolInterval = 500; // Interval of running this script (unit: millisecond)
 
         var blockedNumber = 0;
+        var subjects = document.getElementsByClassName("list clearfix")[0].getElementsByTagName("li");
 
         setInterval(patrol, patrolInterval);
 
         function patrol()
         {
-            var subjects = document.getElementsByClassName("list clearfix")[0].getElementsByTagName("li");
-
             Search:
             for (var i = 0; i < subjects.length; i ++)
             {
