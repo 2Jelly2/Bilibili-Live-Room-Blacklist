@@ -15,7 +15,7 @@
     {
         'use strict';
 
-        var blacklist = ["1944820","4339349"]; // Live room numbers which you want to block
+        var blacklist = [1944820, 4339349]; // Live room numbers which you want to block
         var patrolInterval = 500; // Interval of running this script (unit: millisecond)
 
         var blockedNumber = 0;
