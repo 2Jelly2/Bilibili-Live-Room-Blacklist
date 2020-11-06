@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.03
+// @version      0.03b+
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 // @grant        none
@@ -82,19 +82,19 @@
                 //梦影 - ?
                 //没腿笼屉 - ?
                 21648286, //璐比Channel
-                //路卡Luca_Channel
+                //路卡Luca_Channel - ?
                 2064239, //鹿野灸
                 634585, //露露·C·娜塔莉娅
-                //泷泽寒-official
+                //泷泽寒-official - ?
                 22027710, //蓝波Iamb
-                520444073, //可可拉
+                22243501, //可可拉
                 213308, //军师-RandF
                 21291286, //镜像组
                 427931, //静夜夜
                 364180, //金龙胧月
                 1689550, //凰裳(Twinkle_凰裳)
                 4145448, //红茶Asmodeus
-                16405753, //鹤崎泷_TakiChannel
+                3429937, //鹤崎泷_TakiChannel
                 21823053, //古见月FurumiLuna
                 3595055, //咕噜大魔王
                 //鳳姫ちゃん - ?
@@ -121,7 +121,13 @@
                 157501, //艾露ミアナ
                 21645790, //阿涅4N1E
                 892432, //po芽那
-                1282429 //Piquer
+                1282429, //Piquer
+
+                22210372, //香取绮罗_kira
+                22262300, //人间蜜药
+                12845193, //鸢尾牙牙Yamia
+                569341, //香草莓巧子Machoke
+                9202763 //默然-mory
             ];
         var patrolInterval = 500; // Interval of running this script (unit: millisecond)
 
