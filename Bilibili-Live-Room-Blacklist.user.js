@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.03b
+// @version      0.03
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 // @grant        none
@@ -121,7 +121,7 @@
                 157501, //艾露ミアナ
                 21645790, //阿涅4N1E
                 892432, //po芽那
-                1282429, //Piquer
+                1282429 //Piquer
             ];
         var patrolInterval = 500; // Interval of running this script (unit: millisecond)
 
