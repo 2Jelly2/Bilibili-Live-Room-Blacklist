@@ -5,11 +5,8 @@
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 
-// @grant        GM_addValueChangeListener
-// @grant        GM_removeValueChangeListener
 // @grant        GM_setValue
 // @grant        GM_getValue
-// @grant        GM_deleteValue
 
 // @match        https://live.bilibili.com/p/eden/area-tags*
 
