@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.04+++
+// @version      0.04++
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 
@@ -56,10 +56,11 @@
             ]
         );
 
+        //creatMenu();
+        const blocklist = generateList();
         let objects = document.getElementsByClassName("list clearfix")[0].getElementsByTagName("li");
-        creatMenu();
         let blockedNumber = 0;
-        let patrolLoop = setInterval(patrol(generateList()), patrolInterval);//blacklist, whitelist, blacklistRemoved
+        let patrolLoop = setInterval(patrol, patrolInterval);
 
 
         function creatMenu()
@@ -91,8 +92,7 @@
                         21725187, //子花酱Hanako
                         21721967, //椎名真绪
                         3408715, //巧克力
-                        815973, //钱二两 - 永久封禁
-
+                        815973, //钱二两 - 永久封禁,
 
                         //Messiah
                         1944820, //切茜娅
@@ -139,7 +139,7 @@
                         21775372, //烛龙 - 前中之人?
                         22329990, //大微垣
                         //太微垣
-                        21993453, //朱九儿
+                        21993453, //朱九儿 = 鳳姫ちゃん
                         //玄鸡
                         22282330, //心月狐
                         //房日兔
@@ -153,24 +153,24 @@
                         540024, //粉黛乱子
                         22210372, //香取绮罗_Kira
                         9711880, //米呦Miyu
-                        //乌月
+                        2659281, //乌月
                         3279447, //塔尔斯
                         4066032, //安奈るり
                         1689550, //凰裳(Twinkle_凰裳)
-                        //居居喵
-                        //路卡
-                        //黑白
+                        22210805, //居居喵
+                        21921854, //路卡
+                        409538, //黑白
 
 
                         //曙光
-                        //将离
-                        //雷柏磷
-                        //S1娘
+                        12081986, //将离
+                        21879412, //雷柏磷
+                        4012961, //S1娘
                         22256250, //与朵小天使
                         3595055, //咕噜大魔王
-                        //光冥
+                        22480197, //光冥
                         718548, //默磷
-                        //白云藻
+                        22477194, //白云藻
 
                         //DDL
 
@@ -193,7 +193,6 @@
                         21740743, //桃里莲弥Renya
                         21516855, //太皮鹿
                         21582212, //苏怡之
-                        384688, //松下枭太Official - 更名:星野泽Hoshino
                         4918903, //霜羽
                         454068, //山雀Aile
                         755940, //山崎kaori
@@ -233,6 +232,11 @@
                         21645790, //阿涅4N1E
                         892432, //po芽那
                         1282429, //Piquer
+                        14319044, //若月桂
+                        384688, //松下枭太Official - 更名:星野泽Hoshino
+                        2809226, //没腿笼屉 - 更名:带娃笼屉Channel
+                        21418775, //白鸟穹 - 更名:飞鸟穹黑鸟穹LuxNox - 与[狗神由紀Official](前?)号主有互动
+                        8069831, //白鹿与角鸱Official - 更名:安德烈-赫岑朵夫Official
 
                         22262300, //人间蜜药
                         12845193, //鸢尾牙牙Yamia
@@ -246,20 +250,14 @@
                         //燃 - ?
                         //趴熊 - ?
                         //南瓜子 - ?
-                        //默然 - ?
                         //莫维害行 - ?
                         //梦影 - ?
-                        //没腿笼屉 - ?
-                        //泷泽寒-official - ?
-                        //鳳姫ちゃん - ?
-                        //白鸟穹 - ?
-                        //白鹿与角鸱Official - ?
 
                         //奇姬LilyPop - 无直播间 / uid=485407858
 
+                        //泷泽寒-official - 毕业?
                         //尤莉艾露 - 毕业?
                         //悠奈Yuli - 毕业?
-                        //若月桂Official - 毕业?
                         5633244 //世寒 - 毕业
                     ]
                 );
@@ -273,27 +271,18 @@
             return blocklist;
         }
 
-        function patrol(blocklist)
+        function patrol()
         {
             for (let i = 0; i < objects.length; i ++)
             {
                 let roomNumber = objects[i].getElementsByTagName("a")[0].pathname;
                 roomNumber = roomNumber.replace('/', '');
 
-                for(let roomNumberBlocked of blocklist)
+                for(let roomToBeBlock of blocklist)
                 {
-                    if(roomNumber == roomNumberBlocked)
+                    if(roomNumber == roomToBeBlock)
                     {
                         objects[i].remove();
-
-                        if(blocklist.length < 5) // Quit script for short list
-                        {
-                            blockedNumber ++;
-                            if(blockedNumber == blocklist.length)
-                            {
-                                clearInterval(patrolLoop)
-                            }
-                        }
                     }
                 }
             }
