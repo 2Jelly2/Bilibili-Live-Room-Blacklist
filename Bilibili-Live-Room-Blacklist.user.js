@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.04+++
+// @version      0.04++++
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 
@@ -60,6 +60,7 @@
         const blocklist = generateList();
         let objects = document.getElementsByClassName("list clearfix")[0].getElementsByTagName("li");
         let blockedNumber = 0;
+        let startRoom = 0;
         let patrolLoop = setInterval(patrol, patrolInterval);
 
 
@@ -80,12 +81,12 @@
 
             if(majoBan == null)
             {
-                GM_setValue("majoBan", majoBan = confirm("是否屏蔽所有已知魔女公司旗下主播？"));
+                GM_setValue("majoBan", majoBan = confirm("是否屏蔽所有已知魔女公司旗下主播？\n（仅收集了部分名单，且不保证准确性）"));
             }
 
-            if(majoBan)
+            if(majoBan) // TBD: Full-day AI anchor list?
             {
-                const majoList = new Set
+                const majoList = new Set // TBD: Separate list source? Low latency (Cloud Object-Storage?) or low frequency (timer?)?
                 (
                     [
                         //Majo
@@ -273,7 +274,7 @@
 
         function patrol()
         {
-            for (let i = 0; i < objects.length; i ++)
+            for (let i = startRoom; i < objects.length; i ++)
             {
                 let roomNumber = objects[i].getElementsByTagName("a")[0].pathname;
                 roomNumber = roomNumber.replace('/', '');
@@ -283,9 +284,19 @@
                     if(roomNumber == roomToBeBlock)
                     {
                         objects[i].remove();
+                        i --;
+                        if(blocklist.size < 5) // Quit script for short list
+                        {
+                            blockedNumber ++;
+                            if(blockedNumber == blocklist.length)
+                            {
+                                clearInterval(patrolLoop)
+                            }
+                        }
                     }
                 }
             }
+            startRoom = objects.length;
         }
     }
 )();
