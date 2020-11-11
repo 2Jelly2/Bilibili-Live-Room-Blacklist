@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.04++++
+// @version      0.04+++++
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 
@@ -236,7 +236,7 @@
                         14319044, //若月桂
                         384688, //松下枭太Official - 更名:星野泽Hoshino
                         2809226, //没腿笼屉 - 更名:带娃笼屉Channel
-                        21418775, //白鸟穹 - 更名:飞鸟穹黑鸟穹LuxNox - 与[狗神由紀Official](前?)号主有互动
+                        //21418775, //白鸟穹 - 已退出，澄清：https://ngabbs.com/read.php?tid=24107967
                         8069831, //白鹿与角鸱Official - 更名:安德烈-赫岑朵夫Official
 
                         22262300, //人间蜜药
@@ -290,7 +290,7 @@
                             blockedNumber ++;
                             if(blockedNumber == blocklist.length)
                             {
-                                clearInterval(patrolLoop)
+                                clearInterval(patrolLoop);
                             }
                         }
                     }
