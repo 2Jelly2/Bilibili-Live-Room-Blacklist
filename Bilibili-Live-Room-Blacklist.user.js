@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.05
+// @version      0.05+
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 
@@ -246,6 +246,8 @@
                         9202763, //默然-mory
 
                         872551, //电鸟个灯泡
+
+                        22495291, //妙妙子Official
 
                         //一酱 - ?
                         //玄懿 - ?
