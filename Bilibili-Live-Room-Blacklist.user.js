@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.04++++++
+// @version      0.05
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 
@@ -98,6 +98,7 @@
                         //Messiah
                         1944820, //切茜娅
                         1038, //小伞一把
+                        26283, //小伞一把
                         22014628, //五月织姬
                         3858888, //伊月猫凛
                         21718578, //百草姬
@@ -266,6 +267,31 @@
                 );
 
                 blocklist = new Set([...blocklist, ...majoList]);
+            }
+
+
+
+            let aSoulBan = GM_getValue("aSoulBan");
+
+            if(aSoulBan == null)
+            {
+                GM_setValue("aSoulBan", aSoulBan = confirm("是否屏蔽所有已知乐华A-Soul旗下主播？\n（不保证准确性）"));
+            }
+
+            if(aSoulBan)
+            {
+                const aSoulList = new Set
+                (
+                    [
+                        22625027, //乃琳Queen
+                        22637261, //嘉然今天吃什么
+                        22634198, //珈乐Carol
+                        22632424, //贝拉kira
+                        22625025 //向晚大魔王
+                    ]
+                );
+
+                blocklist = new Set([...blocklist, ...aSoulList]);
             }
 
             blocklist = new Set([...blocklist].filter(x => !whitelist.has(x)));
