@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.05+
+// @version      0.05++
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 
@@ -285,6 +285,7 @@
                 const aSoulList = new Set
                 (
                     [
+                        22632157, //AS Official
                         22625027, //乃琳Queen
                         22637261, //嘉然今天吃什么
                         22634198, //珈乐Carol
