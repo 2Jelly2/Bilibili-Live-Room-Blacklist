@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.05++
+// @version      0.05+++
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 
@@ -180,6 +180,19 @@
                         //AW$L
 
 
+                        //Virtual Union
+                        22816111, //东雪莲
+                        22608112, //希亚娜Ciyana
+                        22384516, //呜米
+                        8792912, //咩栗
+                        318, //还有醒着的么
+                        22824550, //罗菈Rola
+                        88615, //奈姬niki
+                        22348429, //赫卡Tia
+                        22700040, //露珀塔
+
+
+                        //Others
                         740330, //玥之冰
                         21636874, //鸢尾Alina
                         21925057, //尤菲黎娅
@@ -221,7 +234,7 @@
                         91041, //断手猫
                         2313, //电流妹Delia
                         710449, //丹羽加奈
-                        3765033, //超危蓝猫可可亚
+                        //3765033, //超危蓝猫可可亚 - 不属实：https://ngabbs.com/read.php?tid=24065790&page=8#pid523640757Anchor
                         27334, //草翦葱
                         142572, //柄柄ちゃん
                         5701155, //彼岸sama_siki
@@ -237,7 +250,7 @@
                         14319044, //若月桂
                         384688, //松下枭太Official - 更名:星野泽Hoshino
                         2809226, //没腿笼屉 - 更名:带娃笼屉Channel
-                        //21418775, //白鸟穹 - 已退出，澄清：https://ngabbs.com/read.php?tid=24107967
+                        //21418775, //白鸟穹 - 已退出：https://ngabbs.com/read.php?tid=24107967
                         8069831, //白鹿与角鸱Official - 更名:安德烈-赫岑朵夫Official
 
                         22262300, //人间蜜药
