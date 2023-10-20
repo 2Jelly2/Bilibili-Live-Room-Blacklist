@@ -17,9 +17,6 @@
     {
         'use strict';
 
-        // Interval of running this script (unit: millisecond)
-        const patrolInterval = 500;
-
         // Manually enable or disable this script to block all anchors who belong to Majo Company according to collected list
         //GM_setValue("majoBan", true);
 
@@ -61,7 +58,6 @@
         let objects = document.getElementsByClassName("index_1Jokt5rg")[0].getElementsByClassName("index_3Uym8ODI");
         let blockedNumber = 0;
         let startRoom = 0;
-        let patrolLoop = setInterval(patrol, patrolInterval);
 
 
         function creatMenu()
@@ -330,18 +326,17 @@
                     {
                         objects[i].remove();
                         i --;
-                        if(blocklist.size < 5) // Quit script for short list
-                        {
-                            blockedNumber ++;
-                            if(blockedNumber == blocklist.length)
-                            {
-                                clearInterval(patrolLoop);
-                            }
-                        }
+                        console.log(roomNumber + " blocked");
                     }
                 }
             }
             startRoom = objects.length;
         }
+
+        patrol();
+        const observer = new MutationObserver(function (mutations){
+            patrol();
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
     }
 )();
