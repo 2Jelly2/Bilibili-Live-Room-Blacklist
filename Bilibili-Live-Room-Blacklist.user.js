@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili直播间屏蔽
 // @namespace    https://github.com/2Jelly2/Bilibili-Live-Room-Blacklist
-// @version      0.07
+// @version      0.08
 // @description  Block specific live rooms on Bilibili.
 // @author       時計坂しぐれ
 
@@ -55,10 +55,13 @@
 
         //creatMenu();
         const blocklist = generateList();
-        let objects = document.getElementsByClassName("index_1Jokt5rg")[0].getElementsByClassName("index_3Uym8ODI");
-        let blockedNumber = 0;
-        let startRoom = 0;
+        var startRoom = 0;
 
+        patrol();
+        const observer = new MutationObserver(function (mutations){
+            patrol();
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
 
         function creatMenu()
         {
@@ -313,30 +316,29 @@
             return blocklist;
         }
 
+        function roomList()
+        {
+            return document.getElementById("area-tag-list").querySelectorAll("a#card");
+        }
+
         function patrol()
         {
+            let objects = roomList()
             for (let i = startRoom; i < objects.length; i ++)
             {
-                let roomNumber = objects[i].getElementsByTagName("a")[0].pathname;
+                let roomNumber = objects[i].pathname;
                 roomNumber = roomNumber.replace('/', '');
 
                 for(let roomToBeBlock of blocklist)
                 {
                     if(roomNumber == roomToBeBlock)
                     {
-                        objects[i].remove();
-                        i --;
+                        objects[i].parentElement.removeChild(objects[i]);
                         console.log(roomNumber + " blocked");
                     }
                 }
             }
-            startRoom = objects.length;
+            startRoom = roomList().length;
         }
-
-        patrol();
-        const observer = new MutationObserver(function (mutations){
-            patrol();
-        });
-        observer.observe(document.body, { childList: true, subtree: true });
     }
 )();
